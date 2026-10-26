@@ -1,0 +1,11 @@
+{
+  "name": "acestream-launcher",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/launcher.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

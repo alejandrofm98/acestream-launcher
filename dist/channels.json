@@ -1,0 +1,13 @@
+[
+  {
+    "id": "prueba",
+    "name": "Canal de prueba",
+    "qualities": [
+      {
+        "id": "original",
+        "label": "Original",
+        "url": "acestream://574e7432eb6b80e541fd42759850dd8bc7b7fa28"
+      }
+    ]
+  }
+]

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10120f">
+    <meta name="description" content="Elige un canal y ábrelo en Ace Stream instalado en tu dispositivo.">
+    <title>Ace Stream · canales</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="#inicio" aria-label="Ace Stream, inicio"><span class="mark" aria-hidden="true">A</span><span>ACE<span class="wordmark-light">STREAM</span></span></a>
+      <span class="utility">LANZADOR WEB <span class="utility-dot" aria-hidden="true"></span></span>
+    </header>
+
+    <main id="inicio">
+      <section class="hero" aria-labelledby="title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> SELECCIÓN DIRECTA AL REPRODUCTOR</p>
+          <h1 id="title">Del enlace<br>al <em>play.</em></h1>
+          <p class="lede">Elige un canal y una calidad. Ace Stream se encarga de reproducirlo en tu dispositivo.</p>
+        </div>
+        <div class="orbit-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+          <div class="orbit-core"><span>▶</span></div><span class="orbit-spark spark-a"></span><span class="orbit-spark spark-b"></span>
+          <span class="orbit-caption">P2P <i>·</i> STREAM</span>
+        </div>
+      </section>
+
+      <section class="launcher" aria-label="Abrir Ace Stream">
+        <form id="launch-form" novalidate>
+          <div class="catalog-control">
+            <label class="field-label" for="channel">CANAL</label>
+            <select id="channel" name="channel" disabled aria-describedby="catalog-state">
+              <option value="">Cargando canales…</option>
+            </select>
+          </div>
+          <div class="catalog-control quality-control">
+            <label class="field-label" for="quality">CALIDAD</label>
+            <select id="quality" name="quality" disabled>
+              <option value="">—</option>
+            </select>
+          </div>
+          <p class="catalog-state" id="catalog-state" role="status" aria-live="polite">Cargando el catálogo de canales…</p>
+          <button class="retry-button" id="catalog-retry" type="button" hidden>Reintentar carga</button>
+          <div class="controls-row">
+            <div class="platform-control">
+              <label class="field-label" for="platform">TU DISPOSITIVO</label>
+              <select id="platform" name="platform">
+                <option value="android">Android</option>
+                <option value="windows">Windows</option>
+                <option value="linux">Linux</option>
+                <option value="unsupported">Otro dispositivo</option>
+              </select>
+            </div>
+            <label class="installed-check"><input id="installed" type="checkbox"><span class="checkmark" aria-hidden="true"></span><span>Tengo Ace Stream<br><strong>instalado</strong></span></label>
+          </div>
+          <p class="unsupported-note" id="unsupported-note" hidden>En iOS hace falta un motor externo compatible. Este lanzador no puede abrirlo directamente.</p>
+
+          <button class="launch-button" id="launch-button" type="submit" disabled><span>Abrir canal en Ace Stream</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+          <p class="launch-state" id="launch-state" role="status" aria-live="polite" hidden>Solicitud enviada al dispositivo. Si no se abre, consulta la ayuda.</p>
+          <p class="fine-print">El vídeo se reproduce en Ace Stream. Esta web no retransmite la señal.</p>
+        </form>
+        <div class="install-link">¿Aún no tienes la aplicación? <a href="https://www.acestream.org/" target="_blank" rel="noopener noreferrer">Descarga Ace Stream <span aria-hidden="true">↗</span></a><span class="install-separator">·</span><a href="https://docs.acestream.net/products/" target="_blank" rel="noopener noreferrer">Documentación</a></div>
+      </section>
+
+      <section class="help" id="ayuda" aria-labelledby="help-title">
+        <div class="help-heading"><span class="help-index">01 / AYUDA</span><h2 id="help-title">¿No se abrió?</h2><p>El navegador entrega el enlace a tu sistema. La apertura depende de que Ace Stream esté instalado y asociado.</p></div>
+        <div class="help-items">
+          <details class="help-item" data-help="android"><summary><span class="help-platform">Android</span><span class="help-title">Elige una aplicación capaz de reproducir</span><span class="plus" aria-hidden="true">+</span></summary><div class="help-body"><p>El enlace intenta abrir una aplicación con reproductor y soporte para enlaces Ace Stream. Instalar solo el engine no garantiza que haya una app que abra este tipo de enlace y reproduzca el contenido. Si el intent no funciona, usa el enlace estándar para la selección actual:</p><a id="standard-link" class="standard-link" href="#" hidden>Abrir acestream://…</a></div></details>
+          <details class="help-item" data-help="windows"><summary><span class="help-platform">Windows</span><span class="help-title">Comprueba la asociación del protocolo</span><span class="plus" aria-hidden="true">+</span></summary><div class="help-body"><p>La instalación debe registrar el protocolo <code>acestream://</code> en Windows. Reinstala o repara Ace Stream si el sistema pregunta con qué aplicación abrirlo o no hace nada.</p></div></details>
+          <details class="help-item" data-help="linux"><summary><span class="help-platform">Linux</span><span class="help-title">Registra el manejador del protocolo</span><span class="plus" aria-hidden="true">+</span></summary><div class="help-body"><p>Tu escritorio necesita un manejador para <code>x-scheme-handler/acestream</code>. Instalar solo el engine puede no registrar esa asociación; configúrala en tu entorno de escritorio. En escritorios con <code>xdg-mime</code>, puedes consultar el manejador actual con <code>xdg-mime query default x-scheme-handler/acestream</code>.</p></div></details>
+          <details class="help-item" data-help="unsupported"><summary><span class="help-platform">Navegadores</span><span class="help-title">Abre esta página en un navegador externo</span><span class="plus" aria-hidden="true">+</span></summary><div class="help-body"><p>Los navegadores integrados de algunas aplicaciones bloquean enlaces a otras apps. Copia la dirección de esta página y ábrela en Chrome, Firefox u otro navegador externo.</p></div></details>
+        </div>
+      </section>
+    </main>
+    <footer><span>ACE STREAM <span class="footer-muted">· lanzador local</span></span><a href="#inicio">Volver arriba ↑</a></footer>
+  </body>
+</html>
